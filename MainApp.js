@@ -1,14 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- * @lint-ignore-every XPLATJSCOPYRIGHT1
- */
-
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import FoodProductsComponent from './Components/FoodProducts/FoodProductsComponent';
 
 
 export default class MainApp extends Component {
@@ -16,7 +8,7 @@ export default class MainApp extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native Dude!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
+        <FoodProductsComponent/>
       </View>
     );
   }
