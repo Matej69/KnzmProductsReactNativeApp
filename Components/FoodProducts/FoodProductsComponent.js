@@ -7,20 +7,23 @@ export default class FoodProductsComponent extends Component {
   constructor(props) {
     super(props);
     this.data = [
-      { title: "Jogurt", price: "1.99" },
-      { title: "Jogurt1", price: "2.99" },
-      { title: "Jogurt2", price: "3.99" },
-      { title: "Jogurt3", price: "4.99" }
+      { name: "Jogurt0", price: "1.99" },
+      { name: "Jogurt1", price: "2.99" },
+      { name: "Jogurt2", price: "3.99" },
+      { name: "Jogurt3", price: "4.99" },
+      { name: "Jogurt1", price: "2.99" },
+      { name: "Jogurt2", price: "3.99" },
+      { name: "Jogurt3", price: "4.99" }
     ]
   }
 
   render() {
     return (
         <View style={styles.cardContainer}>
-          <FoodProductItemComponent>DsaD</FoodProductItemComponent>
-          <FoodProductItemComponent>DsaD</FoodProductItemComponent>
-          <FoodProductItemComponent>DsaD</FoodProductItemComponent>
-          <FoodProductItemComponent>DsaD</FoodProductItemComponent>
+          { 
+            this.data.map(product => 
+              <FoodProductItemComponent name={product.name} price={product.price}> </FoodProductItemComponent>) 
+          }
         </View>
     );
   }
