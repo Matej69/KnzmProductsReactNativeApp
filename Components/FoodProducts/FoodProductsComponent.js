@@ -1,13 +1,24 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, Alert} from 'react-native';
 import FoodProductItemComponent from './FoodProductItemComponent';
+import firebase from '../firebase';
 
 export default class FoodProductsComponent extends Component {
 
-  constructor(props) {
+  constructor(props) { 
+
+  // Initialize Firebase
+  firebase.database().ref('products').once('value', (data) => {
+    // Alert.alert(data[0].toJSON());
+    console.log(data.toJSON());
+  });
+
+
+
+
     super(props);
     this.data = [
-      { name: "Jogurt0", price: "1.99" },
+      { name: "Jogurt008", price: "1.99" },
       { name: "Jogurt1", price: "2.99" },
       { name: "Jogurt2", price: "3.99" },
       { name: "Jogurt3", price: "4.99" },
@@ -15,6 +26,7 @@ export default class FoodProductsComponent extends Component {
       { name: "Jogurt2", price: "3.99" },
       { name: "Jogurt3", price: "4.99" }
     ]
+
   }
 
   render() {
