@@ -7,7 +7,7 @@ export default class MainApp extends Component {
   render() {
     return (
       <View>
-        <FoodProductsComponent buraz="buraz zdravko"/>
+        <FoodProductsComponent/>
       </View>
     );
   }

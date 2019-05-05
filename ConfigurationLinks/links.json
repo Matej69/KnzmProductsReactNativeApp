@@ -2,6 +2,7 @@
   "url1": "https://www.raywenderlich.com/247-react-native-tutorial-building-android-apps-with-javascript",
   "url2": "https://medium.com/@adityasingh_32512/solved-unable-to-load-script-from-assets-index-android-bundle-bdc5e3a3d5ff",
   "url3": "https://stackoverflow.com/questions/32634352/react-native-android-build-failed-sdk-location-not-found",
+  "cmdToMakeItWorkOnEmulators": "react-native run-android",
   "cmdToMakeItWorkOnMobileDevice": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
   "goodFIrebaseExamples": "https://www.youtube.com/watch?v=p0hCPHHlxjk"
 }

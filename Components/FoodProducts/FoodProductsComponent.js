@@ -7,25 +7,29 @@ export default class FoodProductsComponent extends Component {
 
   constructor(props) { 
 
+    super(props);
+    this.state = { products: []};
+
+
+
   // Initialize Firebase
-  firebase.database().ref('products').once('value', (data) => {
-    // Alert.alert(data[0].toJSON());
-    console.log(data.toJSON());
+  var productsDb = firebase.database().ref('products');
+
+  productsDb.orderByChild('priceBase').equalTo('7').once('value', (data) => {
+    var value;
+    var products = [];
+    Object.keys(data.toJSON()).forEach(function(key) {
+      if(key < 30) {
+        value = data.toJSON()[key];
+        products.push({name: value.name, price: value.priceBase+'.'+value.priceExtension+' kn', imgSrc: value.imgSrc});
+        console.log(value);
+      }
+    });
+    this.setState(
+      { products: products }
+    )
   });
 
-
-
-
-    super(props);
-    this.data = [
-      { name: "Jogurt008", price: "1.99" },
-      { name: "Jogurt1", price: "2.99" },
-      { name: "Jogurt2", price: "3.99" },
-      { name: "Jogurt3", price: "4.99" },
-      { name: "Jogurt1", price: "2.99" },
-      { name: "Jogurt2", price: "3.99" },
-      { name: "Jogurt3", price: "4.99" }
-    ]
 
   }
 
@@ -33,8 +37,8 @@ export default class FoodProductsComponent extends Component {
     return (
         <View style={styles.cardContainer}>
           { 
-            this.data.map(product => 
-              <FoodProductItemComponent name={product.name} price={product.price}> </FoodProductItemComponent>) 
+            this.state.products.map(product => 
+              <FoodProductItemComponent name={product.name} price={product.price} imgSrc={product.imgSrc}> </FoodProductItemComponent>) 
           }
         </View>
     );

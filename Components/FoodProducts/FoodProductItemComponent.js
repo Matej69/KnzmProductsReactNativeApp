@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, Dimensions} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, Dimensions, ImageBackground} from 'react-native';
 
 
 export default class FoodProductItemComponent extends Component {
@@ -8,7 +8,8 @@ export default class FoodProductItemComponent extends Component {
     super(props);
     this.data = {
       name: this.props.name,
-      price: this.props.price
+      price: this.props.price,
+      imgSrc: this.props.imgSrc
     }
     this.state = {
       cardSize: 0
@@ -31,18 +32,28 @@ export default class FoodProductItemComponent extends Component {
               this.styles.productItem,
               { width: this.state.cardSize, aspectRatio: 1 }
         ]}>
-        <Text>{this.data.name}</Text>
-        <Text>{this.data.price}</Text>
+        <ImageBackground style={this.styles.productImage} source={{uri: this.data.imgSrc}}> 
+          <Text style={this.styles.productText}>{this.data.name}</Text>
+          <Text style={this.styles.productText}>{this.data.price}</Text>
+        </ImageBackground>
+        
       </View>
     );
   }
 
   
-styles = StyleSheet.create({
+  styles = StyleSheet.create({
   productItem: {
     borderWidth: 0.5,
     borderColor: 'red',
     backgroundColor: "pink",
+  },
+  productImage: {
+    width: "100%",
+    height: "100%"
+  },
+  productText: {
+    fontWeight: 'bold',
   }
 });
 
